@@ -10,24 +10,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float SprintSpeed;
     private bool isSprint;
     private float movementSpeed;
+    private bool doMove;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         movementSpeed = WalkSpeed;
         isSprint = false;
+        doMove = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (doMove)
+        {
+            GetMovementInput();
+        }
         Move();
     }
 
     private void Move() {
-        velocity.x = Input.GetAxisRaw("Horizontal");
-        velocity.y = Input.GetAxisRaw("Vertical");
-        velocity.Normalize();
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             isSprint = true;
@@ -40,5 +43,14 @@ public class PlayerController : MonoBehaviour
         }
         velocity *= movementSpeed * (Time.deltaTime * 60);
         rb.velocity = velocity;
+    }
+    private void GetMovementInput() {
+        velocity.x = Input.GetAxisRaw("Horizontal");
+        velocity.y = Input.GetAxisRaw("Vertical");
+        velocity.Normalize();
+    }
+
+    public void SetMove(bool doMove) {
+        this.doMove = doMove;
     }
 }
