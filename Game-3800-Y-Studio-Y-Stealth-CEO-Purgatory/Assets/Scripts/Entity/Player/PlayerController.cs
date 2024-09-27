@@ -1,0 +1,97 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerController : EntityController
+{
+    [SerializeField] private float WalkSpeed;
+    [SerializeField] private float SprintSpeed;
+    [SerializeField] private float DisappearTime;
+    [SerializeField] private float DisappearRecharge;
+    private bool isSprint;
+    private bool doMove;
+    private Collider2D collider;
+    private float currDisappearTime;
+    private float currDisappearRecharge;
+    private SpriteRenderer spriteImage;
+    private void GetSprintFromInput() {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            isSprint = true;
+            movementSpeed = SprintSpeed;
+        }
+        else
+        {
+            movementSpeed = WalkSpeed;
+            isSprint = false;
+        }
+    }
+
+    private void GetDisappearFromInput() {
+        if (Input.GetKey(KeyCode.Space) && currDisappearRecharge <= 0) {
+            currDisappearTime += Time.deltaTime;
+            if (currDisappearTime >= DisappearTime) {
+                currDisappearRecharge = DisappearRecharge;
+            }
+            SetMove(false);
+            collider.enabled = false;
+            spriteImage.color = new Color(spriteImage.color.r, spriteImage.color.g, spriteImage.color.b, 0.25f);
+        }
+        else
+        {
+            SetMove(true);
+            collider.enabled = true;
+            spriteImage.color = new Color(spriteImage.color.r, spriteImage.color.g, spriteImage.color.b, 1f);
+            currDisappearTime -= Time.deltaTime / 2;
+            currDisappearTime = Mathf.Max(0, currDisappearTime);
+        }
+        currDisappearRecharge -= Time.deltaTime;
+    }
+
+    public void SetMove(bool doMove) {
+        this.doMove = doMove;
+    }
+    private void SetMovementFromInput()
+    {
+        if (doMove)
+        {
+            Vector2 lastVel = velocity;
+            velocity.x = Input.GetAxisRaw("Horizontal");
+            velocity.y = Input.GetAxisRaw("Vertical");
+            if (velocity.x > 0)
+            {
+                facing.setRight();
+            }
+            else if (velocity.x < 0)
+            {
+                facing.setLeft();
+            }
+            else if (velocity.y > 0)
+            {
+                facing.setUp();
+            }
+            else if (velocity.y < 0)
+            {
+                facing.setDown();
+            }
+            velocity.Normalize();
+        }
+    }
+    public override void EntityBehavior()
+    {
+        GetDisappearFromInput();
+        SetMovementFromInput();
+        GetSprintFromInput();
+    }
+
+    public override void EntityInitialize()
+    {
+        movementSpeed = WalkSpeed;
+        isSprint = false;
+        doMove = true;
+        collider = GetComponent<Collider2D>();
+        currDisappearTime = 0;
+        currDisappearRecharge = 0;
+        spriteImage = sprite.GetComponent<SpriteRenderer>();
+    }
+}
