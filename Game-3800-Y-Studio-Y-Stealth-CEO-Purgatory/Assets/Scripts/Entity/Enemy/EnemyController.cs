@@ -86,9 +86,17 @@ public class EnemyController : EntityController
     }
     private void EnemyLineOfSight()
     {
-        RaycastHit2D lineOfSight = Physics2D.BoxCast(transform.position, new Vector2(24, LineOfSight * 32), 0, facing.GetVector(), LayerMask.GetMask("Wall", "Player"));
-        if (lineOfSight) {
+        RaycastHit2D lineOfSight = Physics2D.BoxCast(transform.position, new Vector2(1, 1), 0, facing.GetVector(), LineOfSight, LayerMask.GetMask("Wall", "Player"));
+        if (lineOfSight && lineOfSight.collider.gameObject.layer == LayerMask.NameToLayer("Player")) {
             Debug.Log("Hit!");
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.matrix = Matrix4x4.TRS(transform.position, Quaternion.Euler(Vector3.zero), Vector3.one);
+        Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
+        Gizmos.matrix = Matrix4x4.TRS(transform.position + LineOfSight * facing.GetVector(), Quaternion.Euler(Vector3.zero), Vector3.one);
+        Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
     }
 }
