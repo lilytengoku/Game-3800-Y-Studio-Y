@@ -35,6 +35,7 @@ public class EnemyController : EntityController
         currentMovement = StartLength * 32;
         rotationTimer = 0;
         MoveLength *= 32;
+        MoveLength += new Vector2(16, 16);
     }
 
     private void EnemyBehavior() {
