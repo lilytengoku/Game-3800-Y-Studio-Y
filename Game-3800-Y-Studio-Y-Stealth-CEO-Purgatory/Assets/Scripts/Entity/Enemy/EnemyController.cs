@@ -32,8 +32,9 @@ public class EnemyController : EntityController
     {
         facing.setDir(StartDirection);
         movementSpeed = 0;
-        currentMovement = StartLength;
+        currentMovement = StartLength * 32;
         rotationTimer = 0;
+        MoveLength *= 32;
     }
 
     private void EnemyBehavior() {
@@ -43,45 +44,47 @@ public class EnemyController : EntityController
             if (currentMovement >= MoveLength.x)
             {
                 movementSpeed = 0;
+                rotationTimer += 1f/60f;
                 if (rotationTimer >= RotateTime)
                 {
                     rotationTimer = 0;
                     facing.Rotate(EdgeRotations);
                     currentMovement = 0;
                 }
-                rotationTimer += Time.deltaTime;
+                Debug.Log(rotationTimer);
             }
             else
             {
                 movementSpeed = MoveSpeed.x;
-                if (currentMovement + (movementSpeed / 32 * (Time.deltaTime * 60)) > MoveLength.x)
+                currentMovement += movementSpeed;
+                if (currentMovement >= MoveLength.x)
                 {
-                    movementSpeed = Mathf.Max(0, (MoveLength.x - currentMovement) * 32);
+                    movementSpeed -= (currentMovement - MoveLength.x);
                 }
-                currentMovement += movementSpeed / 32 * (Time.deltaTime * 60);
             }
         }
         else if (facing.GetVector().y != 0) {
             if (currentMovement >= MoveLength.y)
             {
                 movementSpeed = 0;
+                rotationTimer += 1f / 60f;
                 if (rotationTimer >= RotateTime)
                 {
                     rotationTimer = 0;
                     facing.Rotate(EdgeRotations);
                     currentMovement = 0;
                 }
-                rotationTimer += Time.deltaTime;
             }
             else
             {
                 movementSpeed = MoveSpeed.y;
-                if (currentMovement + (movementSpeed / 32 * (Time.deltaTime * 60)) > MoveLength.y)
+                currentMovement += movementSpeed;
+                if (currentMovement >= MoveLength.x)
                 {
-                    movementSpeed = Mathf.Max(0, (MoveLength.y - currentMovement) * 32);
+                    movementSpeed -= (currentMovement - MoveLength.y);
                 }
-                currentMovement += movementSpeed / 32 * (Time.deltaTime * 60);
             }
+            Debug.Log(rotationTimer);
         }
     }
     private void EnemyLineOfSight()

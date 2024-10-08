@@ -15,7 +15,9 @@ public abstract class EntityController : MonoBehaviour
         rb.MovePosition(rb.position + velocity);
     }
     private void CalculateVelocity() {
-        velocity *= movementSpeed/32 * (Time.deltaTime * 60);
+        float tempSpeed = movementSpeed;
+        tempSpeed /= 32;
+        velocity *= tempSpeed;
     }
     public abstract void EntityBehavior();
     public abstract void EntityInitialize();
@@ -25,10 +27,6 @@ public abstract class EntityController : MonoBehaviour
         EntityBehavior();
         CalculateVelocity();
         SetSpriteDirection();
-    }
-
-    protected void FixedUpdate()
-    {
         Move();
     }
 
@@ -60,6 +58,6 @@ public abstract class EntityController : MonoBehaviour
         {
             angle = 0;
         }
-        sprite.transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), sprite.transform.rotation, Time.deltaTime);
+        sprite.transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), sprite.transform.rotation, 1f/60f);
     }
 }

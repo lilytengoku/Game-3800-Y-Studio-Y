@@ -29,7 +29,7 @@ public class PlayerController : EntityController
 
     private void GetDisappearFromInput() {
         if (Input.GetKey(KeyCode.Space) && currDisappearRecharge <= 0) {
-            currDisappearTime += Time.deltaTime;
+            currDisappearTime += 1/60f;
             if (currDisappearTime >= DisappearTime) {
                 currDisappearRecharge = DisappearRecharge;
             }
@@ -45,7 +45,7 @@ public class PlayerController : EntityController
             currDisappearTime -= Time.deltaTime / 2;
             currDisappearTime = Mathf.Max(0, currDisappearTime);
         }
-        currDisappearRecharge -= Time.deltaTime;
+        currDisappearRecharge -= 1/60f;
     }
 
     public void SetMove(bool doMove) {
