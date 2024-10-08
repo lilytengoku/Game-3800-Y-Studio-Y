@@ -35,7 +35,14 @@ public class EnemyController : EntityController
         currentMovement = StartLength * 32;
         rotationTimer = 0;
         MoveLength *= 32;
-        MoveLength += new Vector2(16, 16);
+        if (MoveLength.x != 0)
+        {
+            MoveLength += new Vector2(16, 0);
+        }
+        if (MoveLength.y != 0)
+        {
+            MoveLength += new Vector2(0, 16);
+        }
     }
 
     private void EnemyBehavior() {
@@ -90,7 +97,7 @@ public class EnemyController : EntityController
     }
     private void EnemyLineOfSight()
     {
-        RaycastHit2D lineOfSight = Physics2D.BoxCast(transform.position, new Vector2(1, 1), 0, facing.GetVector(), LineOfSight, LayerMask.GetMask("Wall", "Player"));
+        RaycastHit2D lineOfSight = Physics2D.BoxCast(transform.position, new Vector2(0.5f, 0.5f), 0, facing.GetVector(), LineOfSight, LayerMask.GetMask("Wall", "Player"));
         if (lineOfSight && lineOfSight.collider.gameObject.layer == LayerMask.NameToLayer("Player")) {
             #if UNITY_STANDALONE
                         Application.Quit();
@@ -104,8 +111,8 @@ public class EnemyController : EntityController
     private void OnDrawGizmos()
     {
         Gizmos.matrix = Matrix4x4.TRS(transform.position, Quaternion.Euler(Vector3.zero), Vector3.one);
-        Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
+        Gizmos.DrawWireCube(Vector3.zero, new Vector3(0.5f, 0.5f, 1));
         Gizmos.matrix = Matrix4x4.TRS(transform.position + LineOfSight * facing.GetVector(), Quaternion.Euler(Vector3.zero), Vector3.one);
-        Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
+        Gizmos.DrawWireCube(Vector3.zero, new Vector3(0.5f, 0.5f, 1));
     }
 }

@@ -1217,7 +1217,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 8.4375
+  orthographic size: 9.25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1673,7 +1673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4888956259333842867, guid: 9bce0b4ef57597045bef61ee71984352, type: 3}
       propertyPath: RotateTime
-      value: 0.2
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4888956259333842867, guid: 9bce0b4ef57597045bef61ee71984352, type: 3}
       propertyPath: MoveSpeed.x
@@ -1693,7 +1693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4888956259333842867, guid: 9bce0b4ef57597045bef61ee71984352, type: 3}
       propertyPath: EdgeRotations
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4888956259333842867, guid: 9bce0b4ef57597045bef61ee71984352, type: 3}
       propertyPath: StartDirection
