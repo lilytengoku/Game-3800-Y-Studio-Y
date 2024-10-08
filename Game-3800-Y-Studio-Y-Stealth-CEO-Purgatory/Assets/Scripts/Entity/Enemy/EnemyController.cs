@@ -92,7 +92,12 @@ public class EnemyController : EntityController
     {
         RaycastHit2D lineOfSight = Physics2D.BoxCast(transform.position, new Vector2(1, 1), 0, facing.GetVector(), LineOfSight, LayerMask.GetMask("Wall", "Player"));
         if (lineOfSight && lineOfSight.collider.gameObject.layer == LayerMask.NameToLayer("Player")) {
-            Application.Quit();
+            #if UNITY_STANDALONE
+                        Application.Quit();
+            #endif
+            #if UNITY_EDITOR
+                        UnityEditor.EditorApplication.isPlaying = false;
+            #endif
         }
     }
 
