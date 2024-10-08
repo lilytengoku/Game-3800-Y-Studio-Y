@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : EntityController
 {
@@ -14,6 +15,7 @@ public class PlayerController : EntityController
     private float currDisappearTime;
     private float currDisappearRecharge;
     private SpriteRenderer spriteImage;
+    [SerializeField] private TextMeshPro text;
     private void GetSprintFromInput() {
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -42,10 +44,13 @@ public class PlayerController : EntityController
             SetMove(true);
             collider.enabled = true;
             spriteImage.color = new Color(spriteImage.color.r, spriteImage.color.g, spriteImage.color.b, 1f);
-            currDisappearTime -= Time.deltaTime / 2;
+            currDisappearTime -= 1 /120f;
             currDisappearTime = Mathf.Max(0, currDisappearTime);
         }
         currDisappearRecharge -= 1/60f;
+
+        float v = DisappearTime - currDisappearTime;
+        text.text = ((int)v) + "";
     }
 
     public void SetMove(bool doMove) {
