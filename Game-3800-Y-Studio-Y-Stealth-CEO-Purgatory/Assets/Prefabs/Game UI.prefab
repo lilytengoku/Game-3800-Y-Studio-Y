@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4759897769403057909}
   m_Layer: 5
   m_Name: PauseBackgroundImage
-  m_TagString: Untagged
+  m_TagString: PauseImage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -676,7 +676,7 @@ GameObject:
   - component: {fileID: 793986085798142054}
   m_Layer: 5
   m_Name: PauseText
-  m_TagString: Untagged
+  m_TagString: PauseText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1257,6 +1257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseImage: {fileID: 61260394330384593}
+  pauseText: {fileID: 793986085798142054}
 --- !u!1001 &8900737493882295398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1265,6 +1266,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 240541102218359037}
     m_Modifications:
+    - target: {fileID: 283017352624102647, guid: 451b12fe846bd6f498318c2b5d69582d, type: 3}
+      propertyPath: m_TagString
+      value: PauseText
+      objectReference: {fileID: 0}
     - target: {fileID: 3499401803540995580, guid: 451b12fe846bd6f498318c2b5d69582d, type: 3}
       propertyPath: m_Name
       value: GameCanvas
@@ -1352,6 +1357,10 @@ PrefabInstance:
     - target: {fileID: 9117957732376381819, guid: 451b12fe846bd6f498318c2b5d69582d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9117957732376381819, guid: 451b12fe846bd6f498318c2b5d69582d, type: 3}
+      propertyPath: m_TagString
+      value: PauseImage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

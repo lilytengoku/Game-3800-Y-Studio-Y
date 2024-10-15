@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static FacingDirection;
+using static PauseOnEscape;
 
 public class EnemyController : EntityController
 {
@@ -23,7 +24,8 @@ public class EnemyController : EntityController
 
     private float currentMovement;
     private float rotationTimer;
-    
+    private PauseOnEscape pauseOnEscape;
+
     public override void EntityBehavior()
     {
         EnemyBehavior();
@@ -38,7 +40,13 @@ public class EnemyController : EntityController
         currentMovement = StartLength * 32;
         rotationTimer = 0;
         MoveLength *= 32;
-        
+
+        GameObject pauseManager = GameObject.Find("PauseButton");
+        if (pauseManager != null)
+        {
+            // Get the PauseOnEscape component
+            pauseOnEscape = pauseManager.GetComponent<PauseOnEscape>();
+        }
     }
 
     private void EnemyBehavior() {
@@ -110,12 +118,7 @@ public class EnemyController : EntityController
             lr.endWidth = 1f;
         }
         if (lineOfSight && lineOfSight.collider.gameObject.layer == LayerMask.NameToLayer("Player")) {
-            #if UNITY_STANDALONE
-                        Application.Quit();
-            #endif
-            #if UNITY_EDITOR
-                        UnityEditor.EditorApplication.isPlaying = false;
-            #endif
+            pauseOnEscape.gameOver();
         }
     }
 }
