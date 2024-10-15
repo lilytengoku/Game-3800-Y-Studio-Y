@@ -93,7 +93,7 @@ public class EnemyController : EntityController
     }
     private void EnemyLineOfSight()
     {
-        RaycastHit2D lineOfSight = Physics2D.BoxCast(transform.position, new Vector2(0.5f, 0.5f), 0, facing.GetVector(), LineOfSight, LayerMask.GetMask("Wall", "Player"));
+        RaycastHit2D lineOfSight = Physics2D.BoxCast(transform.position, new Vector2(0.5f, 0.5f), 0, facing.GetVector(), LineOfSight - 0.25f, LayerMask.GetMask("Wall", "Player"));
         lr.material.color = new Color(lr.material.color.r, lr.material.color.g, lr.material.color.b, 0.3f);
         lr.SetPosition(0, transform.position);
         if (lineOfSight && lineOfSight.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
