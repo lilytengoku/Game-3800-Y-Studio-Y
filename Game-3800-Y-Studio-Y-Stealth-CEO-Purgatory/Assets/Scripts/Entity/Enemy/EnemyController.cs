@@ -99,8 +99,16 @@ public class EnemyController : EntityController
         if (lineOfSight && lineOfSight.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             lr.SetPosition(1, lineOfSight.point);
+            if (facing.GetVector() == Vector3.right || facing.GetVector() == Vector3.left)
+                lr.endWidth = Mathf.Abs(transform.position.x - lineOfSight.point.x) / LineOfSight;
+            else if (facing.GetVector() == Vector3.down || facing.GetVector() == Vector3.up)
+                lr.endWidth = Mathf.Abs(transform.position.y - lineOfSight.point.y) / LineOfSight;
         }
-        else lr.SetPosition(1, transform.position + facing.GetVector() * LineOfSight);
+        else
+        {
+            lr.SetPosition(1, transform.position + facing.GetVector() * LineOfSight);
+            lr.endWidth = 1f;
+        }
         if (lineOfSight && lineOfSight.collider.gameObject.layer == LayerMask.NameToLayer("Player")) {
             #if UNITY_STANDALONE
                         Application.Quit();
