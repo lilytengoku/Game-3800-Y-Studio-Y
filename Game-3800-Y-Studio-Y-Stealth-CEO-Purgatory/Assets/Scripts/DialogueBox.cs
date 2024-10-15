@@ -1,18 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DialogueBox : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private string[] lines;
+    [SerializeField] private TextMeshProUGUI textbox;
+    [SerializeField] private PlayerController player;
+    private int currLine;
+    private bool textStart;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        textStart = false;
+    }
+    private void Update()
+    {
+        if (textStart)
+        {
+            player.SetMove(false);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                currLine++;
+            }
+            if (currLine == lines.Length)
+            {
+                textStart = false;
+                textbox.text = "";
+                player.SetMove(true);
+                Destroy(gameObject);
+            }
+            else
+            {
+                textbox.text = lines[currLine];
+            }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        textStart = true;
     }
 }
