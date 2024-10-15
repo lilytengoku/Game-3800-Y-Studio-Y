@@ -17,7 +17,7 @@ public class PlayerController : EntityController
     private SpriteRenderer spriteImage;
     [SerializeField] private TextMeshPro text;
     private void GetSprintFromInput() {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
             isSprint = true;
             movementSpeed = SprintSpeed;
