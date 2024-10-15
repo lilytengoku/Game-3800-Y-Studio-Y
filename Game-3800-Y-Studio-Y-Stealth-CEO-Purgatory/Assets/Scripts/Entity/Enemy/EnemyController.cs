@@ -19,6 +19,7 @@ public class EnemyController : EntityController
     [SerializeField] private float StartLength;
     [Tooltip("Sets the enemy's base line of sight. Perhaps should be identical across all enemies.")]
     [SerializeField] private float LineOfSight;
+    private LineRenderer lr;
 
     private float currentMovement;
     private float rotationTimer;
@@ -31,6 +32,7 @@ public class EnemyController : EntityController
 
     public override void EntityInitialize()
     {
+        lr = GetComponent<LineRenderer>();
         facing.setDir(StartDirection);
         movementSpeed = 0;
         currentMovement = StartLength * 32;
@@ -92,6 +94,13 @@ public class EnemyController : EntityController
     private void EnemyLineOfSight()
     {
         RaycastHit2D lineOfSight = Physics2D.BoxCast(transform.position, new Vector2(0.5f, 0.5f), 0, facing.GetVector(), LineOfSight, LayerMask.GetMask("Wall", "Player"));
+        lr.material.color = new Color(lr.material.color.r, lr.material.color.g, lr.material.color.b, 0.3f);
+        lr.SetPosition(0, transform.position);
+        if (lineOfSight && lineOfSight.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        {
+            lr.SetPosition(1, lineOfSight.point);
+        }
+        else lr.SetPosition(1, transform.position + facing.GetVector() * LineOfSight);
         if (lineOfSight && lineOfSight.collider.gameObject.layer == LayerMask.NameToLayer("Player")) {
             #if UNITY_STANDALONE
                         Application.Quit();
@@ -100,13 +109,5 @@ public class EnemyController : EntityController
                         UnityEditor.EditorApplication.isPlaying = false;
             #endif
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.matrix = Matrix4x4.TRS(transform.position, Quaternion.Euler(Vector3.zero), Vector3.one);
-        Gizmos.DrawWireCube(Vector3.zero, new Vector3(0.5f, 0.5f, 1));
-        Gizmos.matrix = Matrix4x4.TRS(transform.position + LineOfSight * facing.GetVector(), Quaternion.Euler(Vector3.zero), Vector3.one);
-        Gizmos.DrawWireCube(Vector3.zero, new Vector3(0.5f, 0.5f, 1));
     }
 }

@@ -52,6 +52,7 @@ MonoBehaviour:
   SprintSpeed: 6
   DisappearTime: 5
   DisappearRecharge: 10
+  text: {fileID: 0}
 --- !u!50 &7459200570094666860
 Rigidbody2D:
   serializedVersion: 4
@@ -113,7 +114,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.49
+  m_Radius: 0.4
 --- !u!1 &2545827181576546679
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +188,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8f7dfd35357b0544a8ef17621107e6f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a0b5dae858f57264481880794dd1a759, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
