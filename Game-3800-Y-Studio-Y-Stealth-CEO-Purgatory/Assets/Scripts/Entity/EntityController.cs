@@ -22,7 +22,7 @@ public abstract class EntityController : MonoBehaviour
     public abstract void EntityBehavior();
     public abstract void EntityInitialize();
 
-    protected void Update()
+    protected void FixedUpdate()
     {
         EntityBehavior();
         CalculateVelocity();

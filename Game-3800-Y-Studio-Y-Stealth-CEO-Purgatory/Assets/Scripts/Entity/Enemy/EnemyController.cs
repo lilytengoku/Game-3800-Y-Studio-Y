@@ -22,6 +22,7 @@ public class EnemyController : EntityController
 
     private float currentMovement;
     private float rotationTimer;
+    
     public override void EntityBehavior()
     {
         EnemyBehavior();
@@ -35,14 +36,7 @@ public class EnemyController : EntityController
         currentMovement = StartLength * 32;
         rotationTimer = 0;
         MoveLength *= 32;
-        if (MoveLength.x != 0)
-        {
-            MoveLength += new Vector2(16, 0);
-        }
-        if (MoveLength.y != 0)
-        {
-            MoveLength += new Vector2(0, 16);
-        }
+        
     }
 
     private void EnemyBehavior() {
@@ -59,7 +53,7 @@ public class EnemyController : EntityController
                     facing.Rotate(EdgeRotations);
                     currentMovement = 0;
                 }
-                Debug.Log(rotationTimer);
+                //Debug.Log(rotationTimer);
             }
             else
             {
@@ -92,7 +86,7 @@ public class EnemyController : EntityController
                     movementSpeed -= (currentMovement - MoveLength.y);
                 }
             }
-            Debug.Log(rotationTimer);
+            //Debug.Log(rotationTimer);
         }
     }
     private void EnemyLineOfSight()
@@ -112,7 +106,7 @@ public class EnemyController : EntityController
     {
         Gizmos.matrix = Matrix4x4.TRS(transform.position, Quaternion.Euler(Vector3.zero), Vector3.one);
         Gizmos.DrawWireCube(Vector3.zero, new Vector3(0.5f, 0.5f, 1));
-        Gizmos.matrix = Matrix4x4.TRS(transform.position + LineOfSight * facing.GetVector(), Quaternion.Euler(Vector3.zero), Vector3.one);
+        //Gizmos.matrix = Matrix4x4.TRS(transform.position + LineOfSight * facing.GetVector(), Quaternion.Euler(Vector3.zero), Vector3.one);
         Gizmos.DrawWireCube(Vector3.zero, new Vector3(0.5f, 0.5f, 1));
     }
 }
