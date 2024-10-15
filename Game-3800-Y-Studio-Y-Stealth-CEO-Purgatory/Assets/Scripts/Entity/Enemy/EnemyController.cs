@@ -81,7 +81,7 @@ public class EnemyController : EntityController
             {
                 movementSpeed = MoveSpeed.y;
                 currentMovement += movementSpeed;
-                if (currentMovement >= MoveLength.x)
+                if (currentMovement >= MoveLength.y)
                 {
                     movementSpeed -= (currentMovement - MoveLength.y);
                 }
