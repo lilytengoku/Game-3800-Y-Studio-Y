@@ -10,14 +10,15 @@ public class PlayerController : EntityController
     [SerializeField] private float DisappearTime;
     [SerializeField] private float DisappearRecharge;
     private bool isSprint;
+    private bool isDisappear;
     private bool doMove;
-    private Collider2D collider;
+    private Collider2D collide;
     private float currDisappearTime;
     private float currDisappearRecharge;
     private SpriteRenderer spriteImage;
     [SerializeField] private TextMeshPro text;
     private void GetSprintFromInput() {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
             isSprint = true;
             movementSpeed = SprintSpeed;
@@ -35,14 +36,14 @@ public class PlayerController : EntityController
             if (currDisappearTime >= DisappearTime) {
                 currDisappearRecharge = DisappearRecharge;
             }
-            SetMove(false);
-            collider.enabled = false;
+            isDisappear = true;
+            collide.enabled = false;
             spriteImage.color = new Color(spriteImage.color.r, spriteImage.color.g, spriteImage.color.b, 0.25f);
         }
         else
         {
-            SetMove(true);
-            collider.enabled = true;
+            isDisappear = false;
+            collide.enabled = true;
             spriteImage.color = new Color(spriteImage.color.r, spriteImage.color.g, spriteImage.color.b, 1f);
             currDisappearTime -= 1 /120f;
             currDisappearTime = Mathf.Max(0, currDisappearTime);
@@ -58,9 +59,8 @@ public class PlayerController : EntityController
     }
     private void SetMovementFromInput()
     {
-        if (doMove)
+        if (doMove && !isDisappear)
         {
-            Vector2 lastVel = velocity;
             velocity.x = Input.GetAxisRaw("Horizontal");
             velocity.y = Input.GetAxisRaw("Vertical");
             if (velocity.x > 0)
@@ -84,6 +84,7 @@ public class PlayerController : EntityController
     }
     public override void EntityBehavior()
     {
+        velocity = Vector2.zero;
         GetDisappearFromInput();
         SetMovementFromInput();
         GetSprintFromInput();
@@ -94,7 +95,7 @@ public class PlayerController : EntityController
         movementSpeed = WalkSpeed;
         isSprint = false;
         doMove = true;
-        collider = GetComponent<Collider2D>();
+        collide = GetComponent<Collider2D>();
         currDisappearTime = 0;
         currDisappearRecharge = 0;
         spriteImage = sprite.GetComponent<SpriteRenderer>();
