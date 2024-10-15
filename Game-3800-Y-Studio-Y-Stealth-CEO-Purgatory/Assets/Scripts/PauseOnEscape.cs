@@ -16,14 +16,14 @@ public class PauseOnEscape : MonoBehaviour
 
     public void pressedPause()
     {
-        bool isPaused = pauseImage.activeSelf;
-        pauseImage.SetActive(!isPaused);
+        bool isPaused = !pauseImage.activeSelf;
+        pauseImage.SetActive(isPaused);
         if (isPaused)
         {
-            Time.timeScale = 1.0f;
+            Time.timeScale = 0.0f;
         } else
         {
-            Time.timeScale = 0.0f;
+            Time.timeScale = 1.0f;
         }
     }
 }
