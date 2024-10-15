@@ -106,7 +106,7 @@ public class EnemyController : EntityController
     {
         Gizmos.matrix = Matrix4x4.TRS(transform.position, Quaternion.Euler(Vector3.zero), Vector3.one);
         Gizmos.DrawWireCube(Vector3.zero, new Vector3(0.5f, 0.5f, 1));
-        //Gizmos.matrix = Matrix4x4.TRS(transform.position + LineOfSight * facing.GetVector(), Quaternion.Euler(Vector3.zero), Vector3.one);
+        Gizmos.matrix = Matrix4x4.TRS(transform.position + LineOfSight * facing.GetVector(), Quaternion.Euler(Vector3.zero), Vector3.one);
         Gizmos.DrawWireCube(Vector3.zero, new Vector3(0.5f, 0.5f, 1));
     }
 }
