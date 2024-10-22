@@ -19,7 +19,7 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
     {
         if (textStart)
         {
-            player.SetMove(false);
+            player.SetInput(false);
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 currLine++;
@@ -28,7 +28,7 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
             {
                 textStart = false;
                 textbox.text = "";
-                player.SetMove(true);
+                player.SetInput(true);
                 CollectedAllDialogue.CountDialogue();
                 Destroy(gameObject);
             }

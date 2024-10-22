@@ -11,7 +11,7 @@ public class PlayerController : EntityController
     [SerializeField] private float DisappearRecharge;
     private bool isSprint;
     private bool isDisappear;
-    private bool doMove;
+    private bool doInput;
     private Collider2D collide;
     private float currDisappearTime;
     private float currDisappearRecharge;
@@ -31,7 +31,7 @@ public class PlayerController : EntityController
     }
 
     private void GetDisappearFromInput() {
-        if (Input.GetKey(KeyCode.Space) && currDisappearRecharge <= 0) {
+        if (Input.GetKey(KeyCode.Space) && currDisappearRecharge <= 0 && doInput) {
             currDisappearTime += 1/60f;
             if (currDisappearTime >= DisappearTime) {
                 currDisappearRecharge = DisappearRecharge;
@@ -54,12 +54,12 @@ public class PlayerController : EntityController
         text.text = ((int)v) + "";
     }
 
-    public void SetMove(bool doMove) {
-        this.doMove = doMove;
+    public void SetInput(bool doInput) {
+        this.doInput = doInput;
     }
     private void SetMovementFromInput()
     {
-        if (doMove && !isDisappear)
+        if (doInput && !isDisappear)
         {
             velocity.x = Input.GetAxisRaw("Horizontal");
             velocity.y = Input.GetAxisRaw("Vertical");
@@ -94,7 +94,7 @@ public class PlayerController : EntityController
     {
         movementSpeed = WalkSpeed;
         isSprint = false;
-        doMove = true;
+        doInput = true;
         collide = GetComponent<Collider2D>();
         currDisappearTime = 0;
         currDisappearRecharge = 0;
