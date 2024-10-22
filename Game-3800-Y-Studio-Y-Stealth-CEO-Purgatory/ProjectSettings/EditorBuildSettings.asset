@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuScene.unity
     guid: 854f93f56cb33174f9868813c14f4af6
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/TutorialScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/Level_1.unity
+  - enabled: 0
+    path: Assets/Scenes/DemoLevel.unity
     guid: 1b23990ff37128146bd32d96995bebbe
+  - enabled: 1
+    path: Assets/Scenes/CandyFromBabyScene.unity
+    guid: 1f60327852368aa4e8792691fdb59175
+  - enabled: 1
+    path: Assets/Scenes/BurnedToyFacScene.unity
+    guid: be3cb6d85b614d04a80428090ee59bbd
   m_configObjects: {}

@@ -60,4 +60,5 @@ public abstract class EntityController : MonoBehaviour
         }
         sprite.transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), sprite.transform.rotation, 1f/60f);
     }
+
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
-public class ManagingOfTheScenes : MonoBehaviour
+public class ManagingOfTheScenes : MonoBehaviour, IDataPersistence
 {
     public void quitGame()
     {
@@ -20,25 +20,27 @@ public class ManagingOfTheScenes : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void goTutorial()
+    public void StartNewGame()
     {
         Time.timeScale = 1.0f;
+        DataPersistenceManager.instance.NewGame();
         SceneManager.LoadScene(1);
     }
 
-    public void startGame()
+    public void ContinueGame()
     {
         Time.timeScale = 1.0f;
-        SceneManager.LoadScene(2);
+        DataPersistenceManager.instance.LoadGame();
     }
 
-    public void nextScene()
+    public static void nextScene()
     {
         Time.timeScale = 1.0f;
+        DataPersistenceManager.instance.NewGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void previoiusScene()
+    public static void previoiusScene()
     {
         Time.timeScale = 1.0f;
         if (SceneManager.GetActiveScene().buildIndex > 0)
@@ -50,7 +52,7 @@ public class ManagingOfTheScenes : MonoBehaviour
         }
     }
 
-    public void goToScene(int i)
+    public static void goToScene(int i)
     {
         Time.timeScale = 1.0f;
         if (SceneManager.GetActiveScene().buildIndex >= 0)
@@ -61,4 +63,22 @@ public class ManagingOfTheScenes : MonoBehaviour
             throw new Exception("Cannot go to negative scene");
         }
     }
+
+    public void retryFromSave() {
+        Time.timeScale = 1.0f;
+        //Debug.Log("Retry from save.\nLast saved scene = " + SceneManager.GetActiveScene().buildIndex);
+        DataPersistenceManager.instance.LoadGame();
+    }
+
+    public void LoadData(GameData data) {
+        Debug.Log("Loading saved scene: " + data.activeScene);
+        if (data.activeScene != SceneManager.GetActiveScene().buildIndex) {
+            goToScene(data.activeScene);
+        }
+    }
+
+    public void SaveData(ref GameData data) {
+        data.activeScene = SceneManager.GetActiveScene().buildIndex;
+    }
+
 }

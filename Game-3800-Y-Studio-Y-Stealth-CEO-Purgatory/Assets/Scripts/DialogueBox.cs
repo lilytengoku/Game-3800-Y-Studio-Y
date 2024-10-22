@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class DialogueBox : MonoBehaviour
+public class DialogueBox : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private string[] lines;
     [SerializeField] private TextMeshProUGUI textbox;
@@ -29,6 +29,7 @@ public class DialogueBox : MonoBehaviour
                 textStart = false;
                 textbox.text = "";
                 player.SetMove(true);
+                CollectedAllDialogue.CountDialogue();
                 Destroy(gameObject);
             }
             else
@@ -39,6 +40,18 @@ public class DialogueBox : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        DataPersistenceManager.instance.SaveGame();
         textStart = true;
+    }
+
+    public void LoadData(GameData data) {
+        Debug.Log("Loading saved position: " + data.playerPosition);
+        player.transform.position = data.playerPosition;
+    }
+
+    public void SaveData(ref GameData data) {
+        Vector3 pos = player.transform.position;
+        //Debug.Log("Player pos:" + pos + "\n");
+        data.playerPosition = pos;
     }
 }

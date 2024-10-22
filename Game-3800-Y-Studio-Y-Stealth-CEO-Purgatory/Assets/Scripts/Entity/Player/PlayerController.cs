@@ -100,4 +100,5 @@ public class PlayerController : EntityController
         currDisappearRecharge = 0;
         spriteImage = sprite.GetComponent<SpriteRenderer>();
     }
+
 }

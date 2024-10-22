@@ -49,8 +49,12 @@ public class PauseOnEscape : MonoBehaviour
     public void gameOver()
     {
         gameLost = true;
-        pauseText.text = "Game Over";
+        pauseText.text = "You were caught!";
         Time.timeScale = 0.0f;
         pauseImage.SetActive(true);
+    }
+
+    public void resetGameOver() {
+        gameLost = false;
     }
 }
