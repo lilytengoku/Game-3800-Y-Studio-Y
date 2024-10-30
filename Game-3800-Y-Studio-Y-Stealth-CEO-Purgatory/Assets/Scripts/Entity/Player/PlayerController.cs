@@ -16,7 +16,8 @@ public class PlayerController : EntityController
     private float currDisappearTime;
     private float currDisappearRecharge;
     private SpriteRenderer spriteImage;
-    [SerializeField] private TextMeshPro text;
+    private LineRenderer lr;
+    private float flasher = 0f;
     private void GetSprintFromInput() {
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
@@ -38,10 +39,21 @@ public class PlayerController : EntityController
             }
             isDisappear = true;
             collide.enabled = false;
-            spriteImage.color = new Color(spriteImage.color.r, spriteImage.color.g, spriteImage.color.b, 0.25f);
+            float alpha = 0.25f;
+
+            if (DisappearTime - currDisappearTime <= 1.5f)
+            {
+                flasher += 2f/7f;
+                Debug.Log(flasher);
+                alpha = Mathf.Sin(flasher) > 0 ? 0.75f : 0.25f;
+            }
+            else flasher = 0f;
+
+            spriteImage.color = new Color(spriteImage.color.r, spriteImage.color.g, spriteImage.color.b, alpha);
         }
         else
         {
+            flasher = 0f;
             isDisappear = false;
             collide.enabled = true;
             spriteImage.color = new Color(spriteImage.color.r, spriteImage.color.g, spriteImage.color.b, 1f);
@@ -49,9 +61,6 @@ public class PlayerController : EntityController
             currDisappearTime = Mathf.Max(0, currDisappearTime);
         }
         currDisappearRecharge -= 1/60f;
-
-        float v = DisappearTime - currDisappearTime;
-        text.text = ((int)v) + "";
     }
 
     public void SetInput(bool doInput) {
@@ -90,6 +99,17 @@ public class PlayerController : EntityController
         GetSprintFromInput();
     }
 
+    private void DisappearMeterRender()
+    {
+        if(currDisappearTime == 0)
+        {
+            lr.material.color = new Color(lr.material.color.r, lr.material.color.g, lr.material.color.b, Mathf.Max(0, lr.material.color.a - 1f/60f));
+        }
+        else lr.material.color = new Color(lr.material.color.r, lr.material.color.g, lr.material.color.b, Mathf.Max(1, lr.material.color.a + 1f / 60f));
+        lr.SetPosition(0, new Vector2(transform.position.x - 0.5f, transform.position.y - 0.625f));
+        lr.SetPosition(1, new Vector2((transform.position.x - 0.5f) + Mathf.Clamp((DisappearTime - currDisappearTime)/DisappearTime, 0, 1), transform.position.y - 0.625f));
+    }
+
     public override void EntityInitialize()
     {
         movementSpeed = WalkSpeed;
@@ -99,6 +119,11 @@ public class PlayerController : EntityController
         currDisappearTime = 0;
         currDisappearRecharge = 0;
         spriteImage = sprite.GetComponent<SpriteRenderer>();
+        lr = GetComponent<LineRenderer>();
+    }
+
+    public override void PostMove() {
+        DisappearMeterRender();
     }
 
 }

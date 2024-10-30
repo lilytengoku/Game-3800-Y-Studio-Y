@@ -13,6 +13,7 @@ public abstract class EntityController : MonoBehaviour
     private void Move()
     {
         rb.MovePosition(rb.position + velocity);
+        PostMove();
     }
     private void CalculateVelocity() {
         float tempSpeed = movementSpeed;
@@ -21,6 +22,8 @@ public abstract class EntityController : MonoBehaviour
     }
     public abstract void EntityBehavior();
     public abstract void EntityInitialize();
+
+    public virtual void PostMove() { }
 
     protected void FixedUpdate()
     {
