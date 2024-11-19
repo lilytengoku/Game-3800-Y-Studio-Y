@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 2545827181576546679}
-  WalkSpeed: 5
+  WalkSpeed: 3.5
   DisappearTime: 5
   DisappearRecharge: 10
 --- !u!212 &2939219016755699974
