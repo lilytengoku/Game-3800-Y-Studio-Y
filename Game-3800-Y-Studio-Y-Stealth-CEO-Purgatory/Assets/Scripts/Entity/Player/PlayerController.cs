@@ -6,7 +6,6 @@ using TMPro;
 public class PlayerController : EntityController
 {
     [SerializeField] private float WalkSpeed;
-    [SerializeField] private float SprintSpeed;
     [SerializeField] private float DisappearTime;
     [SerializeField] private float DisappearRecharge;
     private bool isSprint;
@@ -18,18 +17,6 @@ public class PlayerController : EntityController
     private SpriteRenderer spriteImage;
     private LineRenderer lr;
     private float flasher = 0f;
-    private void GetSprintFromInput() {
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-        {
-            isSprint = true;
-            movementSpeed = SprintSpeed;
-        }
-        else
-        {
-            movementSpeed = WalkSpeed;
-            isSprint = false;
-        }
-    }
 
     private void GetDisappearFromInput() {
         if (Input.GetKey(KeyCode.Space) && currDisappearRecharge <= 0 && doInput) {
@@ -96,7 +83,6 @@ public class PlayerController : EntityController
         velocity = Vector2.zero;
         GetDisappearFromInput();
         SetMovementFromInput();
-        GetSprintFromInput();
     }
 
     private void DisappearMeterRender()
