@@ -8,7 +8,6 @@ public class PlayerController : EntityController
     [SerializeField] private float WalkSpeed;
     [SerializeField] private float DisappearTime;
     [SerializeField] private float DisappearRecharge;
-    private bool isSprint;
     private bool isDisappear;
     private bool doInput;
     private Collider2D collide;
@@ -99,7 +98,6 @@ public class PlayerController : EntityController
     public override void EntityInitialize()
     {
         movementSpeed = WalkSpeed;
-        isSprint = false;
         doInput = true;
         collide = GetComponent<Collider2D>();
         currDisappearTime = 0;
