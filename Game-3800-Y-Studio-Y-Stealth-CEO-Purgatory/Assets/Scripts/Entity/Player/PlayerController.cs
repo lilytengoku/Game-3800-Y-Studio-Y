@@ -14,8 +14,10 @@ public class PlayerController : EntityController
     private float currDisappearTime;
     private float currDisappearRecharge;
     private SpriteRenderer spriteImage;
+    private Animator spriteAnimator;
     private LineRenderer lr;
     private float flasher = 0f;
+    bool gameover;
 
     private void GetDisappearFromInput() {
         if (Input.GetKey(KeyCode.Space) && currDisappearRecharge <= 0 && doInput) {
@@ -79,6 +81,10 @@ public class PlayerController : EntityController
     }
     public override void EntityBehavior()
     {
+        if (gameover) {
+            SetInput(false);
+            spriteAnimator.SetBool("IsDead", true);
+        }
         velocity = Vector2.zero;
         GetDisappearFromInput();
         SetMovementFromInput();
@@ -103,11 +109,18 @@ public class PlayerController : EntityController
         currDisappearTime = 0;
         currDisappearRecharge = 0;
         spriteImage = sprite.GetComponent<SpriteRenderer>();
+        spriteAnimator = sprite.GetComponent<Animator>();
         lr = GetComponent<LineRenderer>();
     }
 
     public override void PostMove() {
         DisappearMeterRender();
     }
+    public void DoGameOver() {
+        gameover = true;
+    }
 
+    public bool IsGameOver() {
+        return gameover;
+    }
 }

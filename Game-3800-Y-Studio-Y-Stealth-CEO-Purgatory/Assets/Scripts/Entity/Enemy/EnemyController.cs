@@ -24,7 +24,6 @@ public class EnemyController : EntityController
 
     private float currentMovement;
     private float rotationTimer;
-    private PauseOnEscape pauseOnEscape;
 
     public override void EntityBehavior()
     {
@@ -40,13 +39,6 @@ public class EnemyController : EntityController
         currentMovement = StartLength * 32;
         rotationTimer = 0;
         MoveLength *= 32;
-
-        GameObject pauseManager = GameObject.Find("PauseButton");
-        if (pauseManager != null)
-        {
-            // Get the PauseOnEscape component
-            pauseOnEscape = pauseManager.GetComponent<PauseOnEscape>();
-        }
     }
 
     private void EnemyBehavior() {
@@ -118,7 +110,10 @@ public class EnemyController : EntityController
             lr.endWidth = 1f;
         }
         if (lineOfSight && lineOfSight.collider.gameObject.layer == LayerMask.NameToLayer("Player")) {
-            pauseOnEscape.gameOver();
+            PlayerController pc = lineOfSight.collider.gameObject.GetComponent<PlayerController>();
+            if (pc != null && !pc.IsGameOver()) {
+                pc.DoGameOver();
+            }
         }
     }
 }
