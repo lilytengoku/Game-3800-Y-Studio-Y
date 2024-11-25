@@ -120,6 +120,11 @@ public class PlayerController : EntityController
         gameover = true;
     }
 
+    public void EndGameOver()
+    {
+        gameover = false;
+    }
+
     public bool IsGameOver() {
         return gameover;
     }
