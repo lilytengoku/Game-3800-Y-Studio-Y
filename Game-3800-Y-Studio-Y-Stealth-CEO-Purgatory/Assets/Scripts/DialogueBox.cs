@@ -30,6 +30,7 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
                 textbox.text = "";
                 player.SetInput(true);
                 CollectedAllDialogue.CountDialogue();
+                DataPersistenceManager.instance.SaveGame();
                 Destroy(gameObject);
             }
             else
@@ -40,7 +41,6 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        DataPersistenceManager.instance.SaveGame();
         textStart = true;
     }
 
