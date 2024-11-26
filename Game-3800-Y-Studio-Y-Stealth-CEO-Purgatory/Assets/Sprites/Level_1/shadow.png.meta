@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d743cd3556d98a640a09edb0b3b86191
+guid: 214b92f0025999d41bdb3ed890d2361c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -81,6 +81,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -106,24 +119,137 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: decorations_0
+      name: shadow_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0225faf41c308e46822184bb5763765
+      internalID: 1168446802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b24e3c9966ba7b41a244dc2cc7700a0
+      internalID: -523446432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10fc611ff40632b4f9b92c6e625fe2e7
+      internalID: 1230569255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 571322d381c5c1241a41529b2d749760
+      internalID: 935340086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a10da2358d81c694983e6c087165b472
+      internalID: -37470568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_5
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e19987d9cfcedec49ab323c47dcfd92e
+      internalID: -707648632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_6
       rect:
         serializedVersion: 2
         x: 0
@@ -137,39 +263,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f06e40c6c571c241bbb698b033f7961
-      internalID: 2028374975
+      spriteID: 7e1ba26e242fab3488a08ff0a506b8db
+      internalID: 1199656851
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: decorations_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3dd32fa42b69ef140a14fef9f049078e
-      internalID: -1875537438
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: decorations_2
+      name: shadow_7
       rect:
         serializedVersion: 2
         x: 32
-        y: 128
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -179,18 +284,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22e160ae8880d064e9944545adef00f6
-      internalID: 1072651230
+      spriteID: 95f164f8cf8cd624ebe239becc86c998
+      internalID: -1053187693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: decorations_3
+      name: shadow_8
       rect:
         serializedVersion: 2
         x: 64
-        y: 128
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -200,18 +305,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c86db7acfd18a0e46bbb9177ea993b80
-      internalID: 731100851
+      spriteID: 338c5159fa92c9e40bee34d3d2f39e03
+      internalID: 1001828325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: decorations_4
+      name: shadow_9
       rect:
         serializedVersion: 2
         x: 96
-        y: 128
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -221,14 +326,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36a41c437b3b89c4a9fec25f600d46a1
-      internalID: 612439012
+      spriteID: 18e509671e3eea144a7c34fe0e5ca8e6
+      internalID: -1256275816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: decorations_5
+      name: shadow_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cb5d028657cb8542972877f1edec42d
+      internalID: -1149824635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_11
       rect:
         serializedVersion: 2
         x: 32
@@ -242,38 +368,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d2952822d5dc0348a67d88c6ac5ac76
-      internalID: -451582399
+      spriteID: e8c15b36c8b136d4e8bb35ecee5a630f
+      internalID: 935044898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: decorations_6
+      name: shadow_12
       rect:
         serializedVersion: 2
-        x: 64
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8d80d2f7ab9eb5242b1d4f8efbb06ae5
-      internalID: 158114935
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: decorations_7
-      rect:
-        serializedVersion: 2
-        x: 160
+        x: 0
         y: 64
         width: 32
         height: 32
@@ -284,18 +389,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52508c1c0d6237f44b6ab5748ed04779
-      internalID: 780526173
+      spriteID: 08bc620a6749fd14aab11e6642fb3be3
+      internalID: 1514674912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: decorations_8
+      name: shadow_13
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -305,14 +410,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae39649843eaf034b94cbd9308ce21c0
-      internalID: 1672839553
+      spriteID: 56da46cd98d519f4ba2ee46c69bc9e77
+      internalID: -1500435631
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: decorations_9
+      name: shadow_14
       rect:
         serializedVersion: 2
         x: 32
@@ -326,14 +431,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26372ac347412da40a350a8c78446402
-      internalID: 178251033
+      spriteID: 4cdae28954e239b4998c1412b90a129e
+      internalID: 319297807
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: decorations_10
+      name: shadow_15
       rect:
         serializedVersion: 2
         x: 64
@@ -347,98 +452,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4901d6493a6920040bd42c72600377dc
-      internalID: -734822199
+      spriteID: 1da70773004884e4d92669f0dc6b7a0a
+      internalID: 1079060953
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: decorations_11
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f467e36a72c86b4c8d2581fc4882985
-      internalID: 1517127147
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: decorations_12
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 903cc5145cf89634592fce4bd7d75872
-      internalID: 1567973212
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: decorations_13
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8670d9a7c5dd9374787f1e9802ef1e98
-      internalID: 131249159
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: decorations_14
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4575f0163702cb8459d76f24ff61fefb
-      internalID: -692475463
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: decorations_15
+      name: shadow_16
       rect:
         serializedVersion: 2
         x: 32
@@ -452,14 +473,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20ffb9ae2f7054d4ba75932c361abee8
-      internalID: -2005872156
+      spriteID: a2107606ed860a144858be4d8dc0a208
+      internalID: 484089968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: decorations_16
+      name: shadow_17
       rect:
         serializedVersion: 2
         x: 64
@@ -473,14 +494,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e6258458d86e954caaec07ec46bc654
-      internalID: 654068537
+      spriteID: 092c9683f49b6fd4ba540044a7afa7e6
+      internalID: -592415710
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: decorations_17
+      name: shadow_18
       rect:
         serializedVersion: 2
         x: 96
@@ -494,8 +515,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0171564ad6c2e649aeac9aaa963a405
-      internalID: 753086087
+      spriteID: 939d5e0da74da484993d18a7e1f8a285
+      internalID: -718218468
       vertices: []
       indices: 
       edges: []
@@ -511,24 +532,25 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      decorations_0: 2028374975
-      decorations_1: -1875537438
-      decorations_10: -734822199
-      decorations_11: 1517127147
-      decorations_12: 1567973212
-      decorations_13: 131249159
-      decorations_14: -692475463
-      decorations_15: -2005872156
-      decorations_16: 654068537
-      decorations_17: 753086087
-      decorations_2: 1072651230
-      decorations_3: 731100851
-      decorations_4: 612439012
-      decorations_5: -451582399
-      decorations_6: 158114935
-      decorations_7: 780526173
-      decorations_8: 1672839553
-      decorations_9: 178251033
+      shadow_0: 1168446802
+      shadow_1: -523446432
+      shadow_10: -1149824635
+      shadow_11: 935044898
+      shadow_12: 1514674912
+      shadow_13: -1500435631
+      shadow_14: 319297807
+      shadow_15: 1079060953
+      shadow_16: 484089968
+      shadow_17: -592415710
+      shadow_18: -718218468
+      shadow_2: 1230569255
+      shadow_3: 935340086
+      shadow_4: -37470568
+      shadow_5: -707648632
+      shadow_6: 1199656851
+      shadow_7: -1053187693
+      shadow_8: 1001828325
+      shadow_9: -1256275816
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
