@@ -24,6 +24,7 @@ public class EnemyController : EntityController
 
     private float currentMovement;
     private float rotationTimer;
+    private CircleCollider2D collide;
 
     public override void EntityBehavior()
     {
@@ -34,6 +35,7 @@ public class EnemyController : EntityController
     public override void EntityInitialize()
     {
         lr = GetComponent<LineRenderer>();
+        collide = GetComponent<CircleCollider2D>();
         facing.setDir(StartDirection);
         movementSpeed = 0;
         currentMovement = StartLength * 32;
@@ -93,10 +95,12 @@ public class EnemyController : EntityController
     }
     private void EnemyLineOfSight()
     {
-        RaycastHit2D lineOfSight = Physics2D.BoxCast(transform.position, new Vector2(0.5f, 0.5f), 0, facing.GetVector(), LineOfSight - 0.25f, LayerMask.GetMask("Wall", "Player"));
+        RaycastHit2D lineOfSight = Physics2D.BoxCast(transform.position, new Vector2(0.5f, 0.5f), 0, facing.GetVector(), LineOfSight - 0.25f, LayerMask.GetMask("Wall", "Player", "Enemy"));
         lr.material.color = new Color(lr.material.color.r, lr.material.color.g, lr.material.color.b, 0.3f);
         lr.SetPosition(0, transform.position);
-        if (lineOfSight && lineOfSight.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        if (lineOfSight &&
+            (lineOfSight.collider.gameObject.layer == LayerMask.NameToLayer("Wall") ||
+            lineOfSight.collider.gameObject.layer == LayerMask.NameToLayer("Enemy")))
         {
             lr.SetPosition(1, lineOfSight.point);
             if (facing.GetVector() == Vector3.right || facing.GetVector() == Vector3.left)
