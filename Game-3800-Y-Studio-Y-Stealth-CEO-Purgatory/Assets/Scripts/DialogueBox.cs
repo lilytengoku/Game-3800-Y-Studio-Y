@@ -11,6 +11,7 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
     [SerializeField] private TextMeshProUGUI textbox;
     [SerializeField] private PlayerController player;
     [SerializeField] private int boxNumber;
+    [SerializeField] private bool required = true;
     private int currLine;
     private bool textStart;
     private bool isActive;

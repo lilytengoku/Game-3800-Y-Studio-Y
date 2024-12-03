@@ -120,4 +120,12 @@ public class EnemyController : EntityController
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && pc != null) {
+            if (!pc.IsGameOver()) pc.DoGameOver();
+        }
+    }
 }
