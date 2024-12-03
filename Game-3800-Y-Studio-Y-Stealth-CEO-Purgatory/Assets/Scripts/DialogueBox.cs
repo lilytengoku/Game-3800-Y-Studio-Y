@@ -8,6 +8,7 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
     [SerializeField] private string[] lines;
     [SerializeField] private TextMeshProUGUI textbox;
     [SerializeField] private PlayerController player;
+    [SerializeField] private bool required = true;
     private int currLine;
     private bool textStart;
 
