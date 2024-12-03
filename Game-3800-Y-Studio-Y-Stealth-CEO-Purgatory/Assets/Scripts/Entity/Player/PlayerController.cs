@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerController : EntityController
+public class PlayerController : EntityController, IDataPersistence
 {
     [SerializeField] private float WalkSpeed;
     [SerializeField] private float DisappearTime;
@@ -19,10 +19,13 @@ public class PlayerController : EntityController
     private float flasher = 0f;
     bool gameover;
 
-    private void GetDisappearFromInput() {
-        if (Input.GetKey(KeyCode.Space) && currDisappearRecharge <= 0 && doInput) {
-            currDisappearTime += 1/60f;
-            if (currDisappearTime >= DisappearTime) {
+    private void GetDisappearFromInput()
+    {
+        if (Input.GetKey(KeyCode.Space) && currDisappearRecharge <= 0 && doInput)
+        {
+            currDisappearTime += 1 / 60f;
+            if (currDisappearTime >= DisappearTime)
+            {
                 currDisappearRecharge = DisappearRecharge;
             }
             isDisappear = true;
@@ -31,7 +34,7 @@ public class PlayerController : EntityController
 
             if (DisappearTime - currDisappearTime <= 1.5f)
             {
-                flasher += 2f/7f;
+                flasher += 2f / 7f;
                 Debug.Log(flasher);
                 alpha = Mathf.Sin(flasher) > 0 ? 0.75f : 0.25f;
             }
@@ -45,13 +48,14 @@ public class PlayerController : EntityController
             isDisappear = false;
             collide.enabled = true;
             spriteImage.color = new Color(spriteImage.color.r, spriteImage.color.g, spriteImage.color.b, 1f);
-            currDisappearTime -= 1 /120f;
+            currDisappearTime -= 1 / 120f;
             currDisappearTime = Mathf.Max(0, currDisappearTime);
         }
-        currDisappearRecharge -= 1/60f;
+        currDisappearRecharge -= 1 / 60f;
     }
 
-    public void SetInput(bool doInput) {
+    public void SetInput(bool doInput)
+    {
         this.doInput = doInput;
     }
     private void SetMovementFromInput()
@@ -81,7 +85,8 @@ public class PlayerController : EntityController
     }
     public override void EntityBehavior()
     {
-        if (gameover) {
+        if (gameover)
+        {
             SetInput(false);
             spriteAnimator.SetBool("IsDead", true);
         }
@@ -92,13 +97,13 @@ public class PlayerController : EntityController
 
     private void DisappearMeterRender()
     {
-        if(currDisappearTime == 0)
+        if (currDisappearTime == 0)
         {
-            lr.material.color = new Color(lr.material.color.r, lr.material.color.g, lr.material.color.b, Mathf.Max(0, lr.material.color.a - 1f/60f));
+            lr.material.color = new Color(lr.material.color.r, lr.material.color.g, lr.material.color.b, Mathf.Max(0, lr.material.color.a - 1f / 60f));
         }
         else lr.material.color = new Color(lr.material.color.r, lr.material.color.g, lr.material.color.b, Mathf.Max(1, lr.material.color.a + 1f / 60f));
         lr.SetPosition(0, new Vector2(transform.position.x - 0.5f, transform.position.y - 0.625f));
-        lr.SetPosition(1, new Vector2((transform.position.x - 0.5f) + Mathf.Clamp((DisappearTime - currDisappearTime)/DisappearTime, 0, 1), transform.position.y - 0.625f));
+        lr.SetPosition(1, new Vector2((transform.position.x - 0.5f) + Mathf.Clamp((DisappearTime - currDisappearTime) / DisappearTime, 0, 1), transform.position.y - 0.625f));
     }
 
     public override void EntityInitialize()
@@ -113,10 +118,12 @@ public class PlayerController : EntityController
         lr = GetComponent<LineRenderer>();
     }
 
-    public override void PostMove() {
+    public override void PostMove()
+    {
         DisappearMeterRender();
     }
-    public void DoGameOver() {
+    public void DoGameOver()
+    {
         gameover = true;
     }
 
@@ -125,7 +132,23 @@ public class PlayerController : EntityController
         gameover = false;
     }
 
-    public bool IsGameOver() {
+    public bool IsGameOver()
+    {
         return gameover;
+    }
+
+    // FOR IDATAPERSITENCE 
+    public void LoadData(GameData data)
+    {
+        // load player position
+        gameObject.transform.position = data.playerPosition;
+        // ensure player is not in gameover
+        gameover = !data.playerAlive;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        // save player position
+        data.playerPosition = gameObject.transform.position;
     }
 }

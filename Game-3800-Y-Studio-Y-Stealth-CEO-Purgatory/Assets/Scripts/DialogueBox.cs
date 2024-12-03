@@ -2,18 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
+using System.Diagnostics;
 
 public class DialogueBox : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private string[] lines;
     [SerializeField] private TextMeshProUGUI textbox;
     [SerializeField] private PlayerController player;
+    [SerializeField] private int boxNumber;
     private int currLine;
     private bool textStart;
+    private bool isActive;
 
     private void Start()
     {
         textStart = false;
+        isActive = gameObject.activeInHierarchy;
+        if (boxNumber == 0)
+        {
+            throw new Exception("All Dialogue boxes must have a unique number");
+        }
     }
     private void Update()
     {
@@ -31,7 +40,7 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
                 player.SetInput(true);
                 CollectedAllDialogue.CountDialogue();
                 DataPersistenceManager.instance.SaveGame();
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
             else
             {
@@ -45,13 +54,19 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
     }
 
     public void LoadData(GameData data) {
-        Debug.Log("Loading saved position: " + data.playerPosition);
-        player.transform.position = data.playerPosition;
+        // load active notes
+        if (data.collectedNotes.Contains(boxNumber))
+        {
+            UnityEngine.Debug.Log("Loaded inactive box #" + boxNumber);
+            gameObject.SetActive(false);
+        }
     }
 
     public void SaveData(ref GameData data) {
-        Vector3 pos = player.transform.position;
-        //Debug.Log("Player pos:" + pos + "\n");
-        data.playerPosition = pos;
+        // save active notes
+        if (!gameObject.activeInHierarchy)
+        {
+            data.collectedNotes.Add(boxNumber);
+        }
     }
 }

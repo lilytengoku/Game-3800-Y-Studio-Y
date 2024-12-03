@@ -30,7 +30,8 @@ public class ManagingOfTheScenes : MonoBehaviour, IDataPersistence
     public void ContinueGame()
     {
         Time.timeScale = 1.0f;
-        DataPersistenceManager.instance.LoadGame();
+        //DataPersistenceManager.instance.LoadGame();
+        SceneManager.LoadScene(1);
     }
 
     public static void nextScene()
@@ -72,7 +73,7 @@ public class ManagingOfTheScenes : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data) {
         Debug.Log("Loading saved scene: " + data.activeScene);
-        if (data.activeScene != SceneManager.GetActiveScene().buildIndex) {
+        if (data.activeScene != SceneManager.GetActiveScene().buildIndex && SceneManager.GetActiveScene().buildIndex != 0) {
             goToScene(data.activeScene);
         }
     }

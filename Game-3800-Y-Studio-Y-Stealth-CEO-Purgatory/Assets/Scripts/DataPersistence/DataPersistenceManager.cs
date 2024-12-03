@@ -24,7 +24,7 @@ public class DataPersistenceManager : MonoBehaviour
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         Debug.Log("Start");
-        //LoadGame();
+        LoadGame();
     }
 
     public void NewGame() {
@@ -55,9 +55,9 @@ public class DataPersistenceManager : MonoBehaviour
             //Debug.LogError("GameData is null. Cannot save game.");
             //return;
         }
-        Debug.Log("dataPersistenceObjects: " + dataPersistenceObjects);
+        //Debug.Log("dataPersistenceObjects: " + dataPersistenceObjects);
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects) {
-            Debug.Log("Saved: " + dataPersistenceObj);
+            //Debug.Log("Saved: " + dataPersistenceObj);
             dataPersistenceObj.SaveData(ref gameData);
         }
 
