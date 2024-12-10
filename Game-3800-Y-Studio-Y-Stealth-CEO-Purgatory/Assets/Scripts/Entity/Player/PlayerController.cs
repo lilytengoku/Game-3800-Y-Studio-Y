@@ -79,6 +79,11 @@ public class PlayerController : EntityController, IDataPersistence
             {
                 facing.setDown();
             }
+
+            if (velocity.x != 0 || velocity.y != 0) {
+                angleDirection = velocity;
+            }
+
             velocity.Normalize();
         }
     }

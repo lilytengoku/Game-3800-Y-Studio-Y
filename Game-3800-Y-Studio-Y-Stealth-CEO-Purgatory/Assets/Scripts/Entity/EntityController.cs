@@ -9,6 +9,7 @@ public abstract class EntityController : MonoBehaviour
     protected float movementSpeed;
     protected Rigidbody2D rb;
     protected FacingDirection facing;
+    protected Vector2 angleDirection;
     [SerializeField] protected GameObject sprite;
     private void Move()
     {
@@ -29,7 +30,7 @@ public abstract class EntityController : MonoBehaviour
     {
         EntityBehavior();
         CalculateVelocity();
-        SetSpriteDirection();
+        SetSpriteDirection(angleDirection);
         Move();
     }
 
@@ -42,26 +43,46 @@ public abstract class EntityController : MonoBehaviour
         EntityInitialize();
     }
 
-    protected void SetSpriteDirection()
+    protected virtual void SetSpriteDirection(Vector2 dir)
     {
         float angle = 0;
-        if (facing.GetVector() == Vector3.right)
+        if (dir.x > 0)
         {
-            angle = 90;
+            if (dir.y > 0)
+            {
+                angle = 45;
+            }
+            else if (dir.y < 0)
+            {
+                angle = 315;
+            }
+            else angle = 0;
         }
-        else if (facing.GetVector() == Vector3.up)
+        else if (dir.x < 0)
         {
-            angle = 180;
+            if (dir.y > 0)
+            {
+                angle = 135;
+            }
+            else if (dir.y < 0)
+            {
+                angle = 225;
+            }
+            else angle = 180;
         }
-        else if (facing.GetVector() == Vector3.left)
-        {
-            angle = 270;
+        else {
+            if (dir.y > 0)
+            {
+                angle = 90;
+            }
+            else if (dir.y < 0)
+            {
+                angle = 270;
+            }
+            else angle = sprite.transform.rotation.z - 90;
         }
-        else if (facing.GetVector() == Vector3.down)
-        {
-            angle = 0;
-        }
-        sprite.transform.rotation = Quaternion.Slerp(Quaternion.Euler(0, 0, angle), sprite.transform.rotation, 1f/60f);
+        angle += 90;
+        sprite.transform.rotation = Quaternion.Slerp(sprite.transform.rotation, Quaternion.Euler(0, 0, angle), 9f * 1f/60f);
     }
 
 }

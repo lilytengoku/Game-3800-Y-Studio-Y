@@ -55,6 +55,7 @@ public class EnemyController : EntityController
                 {
                     rotationTimer = 0;
                     facing.Rotate(EdgeRotations);
+                    angleDirection = facing.GetVector();
                     currentMovement = 0;
                 }
                 //Debug.Log(rotationTimer);
@@ -78,6 +79,7 @@ public class EnemyController : EntityController
                 {
                     rotationTimer = 0;
                     facing.Rotate(EdgeRotations);
+                    angleDirection = facing.GetVector();
                     currentMovement = 0;
                 }
             }
