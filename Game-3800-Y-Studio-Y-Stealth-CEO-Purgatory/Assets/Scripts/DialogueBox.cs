@@ -60,6 +60,8 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
     private void OnTriggerEnter2D(Collider2D collision)
     {
         textStart = true;
+        AudioSource paperSfx = GetComponent<AudioSource>();
+        paperSfx.Play();
         if (hasImage)
         {
             uiImage.sprite = image;
