@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.UI;
 using System.Diagnostics;
 
 public class DialogueBox : MonoBehaviour, IDataPersistence
@@ -12,6 +13,9 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
     [SerializeField] private PlayerController player;
     [SerializeField] private int boxNumber;
     [SerializeField] private bool required = true;
+    [SerializeField] private Image uiImage;
+    [SerializeField] private Sprite image;
+    [SerializeField] private bool hasImage = false;
     private int currLine;
     private bool textStart;
     private bool isActive;
@@ -41,17 +45,20 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
                 player.SetInput(true);
                 CollectedAllDialogue.CountDialogue();
                 DataPersistenceManager.instance.SaveGame();
+                uiImage.enabled = false;
                 gameObject.SetActive(false);
             }
             else
             {
                 textbox.text = lines[currLine];
+                uiImage.enabled = true;
             }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         textStart = true;
+        uiImage.sprite = image;
     }
 
     public void LoadData(GameData data) {
