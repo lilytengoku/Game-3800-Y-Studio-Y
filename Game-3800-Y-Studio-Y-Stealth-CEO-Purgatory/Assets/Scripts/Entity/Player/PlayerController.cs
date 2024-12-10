@@ -35,7 +35,6 @@ public class PlayerController : EntityController, IDataPersistence
             if (DisappearTime - currDisappearTime <= 1.5f)
             {
                 flasher += 2f / 7f;
-                Debug.Log(flasher);
                 alpha = Mathf.Sin(flasher) > 0 ? 0.75f : 0.25f;
             }
             else flasher = 0f;
