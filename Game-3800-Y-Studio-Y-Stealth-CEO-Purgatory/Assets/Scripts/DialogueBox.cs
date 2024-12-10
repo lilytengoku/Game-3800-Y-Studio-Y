@@ -24,10 +24,6 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
     {
         textStart = false;
         isActive = gameObject.activeInHierarchy;
-        if (boxNumber == 0)
-        {
-            throw new Exception("All Dialogue boxes must have a unique number");
-        }
     }
     private void Update()
     {
@@ -45,20 +41,29 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
                 player.SetInput(true);
                 CollectedAllDialogue.CountDialogue();
                 DataPersistenceManager.instance.SaveGame();
-                uiImage.enabled = false;
+                if (hasImage)
+                {
+                    uiImage.enabled = false;
+                }
                 gameObject.SetActive(false);
             }
             else
             {
                 textbox.text = lines[currLine];
-                uiImage.enabled = true;
+                if (hasImage)
+                {
+                    uiImage.enabled = true;
+                }
             }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         textStart = true;
-        uiImage.sprite = image;
+        if (hasImage)
+        {
+            uiImage.sprite = image;
+        }
     }
 
     public void LoadData(GameData data) {
