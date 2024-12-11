@@ -37,6 +37,7 @@ public class EnemyController : EntityController
         lr = GetComponent<LineRenderer>();
         collide = GetComponent<CircleCollider2D>();
         facing.setDir(StartDirection);
+        angleDirection = facing.GetVector();
         movementSpeed = 0;
         currentMovement = StartLength * 32;
         rotationTimer = 0;
