@@ -104062,6 +104062,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4734689}
     - target: {fileID: 7523338162900799750, guid: a2e6b157e7467124b85caf6a05886a21, type: 3}
+      propertyPath: hasImage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523338162900799750, guid: a2e6b157e7467124b85caf6a05886a21, type: 3}
       propertyPath: boxNumber
       value: 3
       objectReference: {fileID: 0}

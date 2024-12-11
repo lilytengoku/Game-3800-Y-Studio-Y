@@ -9,7 +9,7 @@ public class CollectedAllDialogue : MonoBehaviour
     private static int totalDialogueCount;
 
     private void Start() {
-        totalDialogueCount = transform.childCount;
+        totalDialogueCount = 6;
         numCollected = 0;
         Debug.Log("num remaining: " + totalDialogueCount);
     }
@@ -22,7 +22,7 @@ public class CollectedAllDialogue : MonoBehaviour
 
     private static void CheckCollectedAll() {
         if (numCollected == totalDialogueCount) {
-            ManagingOfTheScenes.nextScene();
+            ManagingOfTheScenes.goToScene(0);
         }
     }
 }
