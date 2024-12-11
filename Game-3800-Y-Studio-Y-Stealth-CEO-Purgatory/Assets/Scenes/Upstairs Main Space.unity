@@ -171,6 +171,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5246306115352800539, guid: 22d1a464cff5b384a9f695a30094f8a7, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 5246306115352800539, guid: 22d1a464cff5b384a9f695a30094f8a7, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246306115352800539, guid: 22d1a464cff5b384a9f695a30094f8a7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 32767
+      objectReference: {fileID: 0}
+    - target: {fileID: 5246306115352800539, guid: 22d1a464cff5b384a9f695a30094f8a7, type: 3}
+      propertyPath: m_UpdateRectTransformForStandalone
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5849335308614613699, guid: 22d1a464cff5b384a9f695a30094f8a7, type: 3}
       propertyPath: m_Name
       value: Game UI
@@ -208,17 +224,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22d1a464cff5b384a9f695a30094f8a7, type: 3}
---- !u!114 &4734688 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1701891773771770488, guid: 22d1a464cff5b384a9f695a30094f8a7, type: 3}
-  m_PrefabInstance: {fileID: 4734687}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4734689 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8257289962594198893, guid: 22d1a464cff5b384a9f695a30094f8a7, type: 3}
@@ -103852,7 +103857,7 @@ PrefabInstance:
     - target: {fileID: 7523338162900799750, guid: a2e6b157e7467124b85caf6a05886a21, type: 3}
       propertyPath: uiImage
       value: 
-      objectReference: {fileID: 4734688}
+      objectReference: {fileID: 4734689}
     - target: {fileID: 7523338162900799750, guid: a2e6b157e7467124b85caf6a05886a21, type: 3}
       propertyPath: hasImage
       value: 1
@@ -104055,7 +104060,7 @@ PrefabInstance:
     - target: {fileID: 7523338162900799750, guid: a2e6b157e7467124b85caf6a05886a21, type: 3}
       propertyPath: uiImage
       value: 
-      objectReference: {fileID: 4734688}
+      objectReference: {fileID: 4734689}
     - target: {fileID: 7523338162900799750, guid: a2e6b157e7467124b85caf6a05886a21, type: 3}
       propertyPath: boxNumber
       value: 3
