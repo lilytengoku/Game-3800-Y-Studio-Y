@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/CandyFromBabyScene.unity
     guid: 1f60327852368aa4e8792691fdb59175
   - enabled: 0
-    path: Assets/Scenes/BurnedToyFacScene.unity
+    path: Assets/Scenes/SideRooms/FirstSideRoom.unity
     guid: be3cb6d85b614d04a80428090ee59bbd
   m_configObjects: {}

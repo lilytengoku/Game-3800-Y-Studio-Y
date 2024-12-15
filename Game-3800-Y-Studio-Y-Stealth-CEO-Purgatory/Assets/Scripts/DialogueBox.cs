@@ -16,6 +16,7 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
     [SerializeField] private Image uiImage;
     [SerializeField] private Sprite image;
     [SerializeField] private bool hasImage = false;
+    private CutsceneMusic cs;
     private int currLine;
     private bool textStart;
     private bool isActive;
@@ -24,6 +25,7 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
     {
         textStart = false;
         isActive = gameObject.activeInHierarchy;
+        cs = FindObjectOfType<CutsceneMusic>();
     }
     private void Update()
     {
@@ -45,6 +47,7 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
                 {
                     uiImage.enabled = false;
                 }
+                cs.toggleCutscene(false);
                 gameObject.SetActive(false);
             }
             else
@@ -64,6 +67,7 @@ public class DialogueBox : MonoBehaviour, IDataPersistence
         paperSfx.Play();
         if (hasImage)
         {
+            cs.toggleCutscene(true);
             uiImage.sprite = image;
         }
     }
