@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class TextBoxDisplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private TextMeshProUGUI prompt;
     private Image panel;
 
     void Start()
@@ -17,5 +18,6 @@ public class TextBoxDisplay : MonoBehaviour
     void Update()
     {
         panel.enabled = text.text != "";
+        prompt.enabled = panel.enabled;
     }
 }

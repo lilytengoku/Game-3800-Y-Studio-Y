@@ -745,6 +745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 282354225599729737}
+  prompt: {fileID: 2812535060685011574}
 --- !u!1 &2945148742660823337
 GameObject:
   m_ObjectHideFlags: 0

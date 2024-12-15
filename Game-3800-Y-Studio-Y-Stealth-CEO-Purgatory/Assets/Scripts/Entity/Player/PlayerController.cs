@@ -17,7 +17,10 @@ public class PlayerController : EntityController, IDataPersistence
     private Animator spriteAnimator;
     private LineRenderer lr;
     private float flasher = 0f;
-    bool gameover;
+    private bool gameover;
+    private float walkCycle = 0;
+    private AudioSource footstepSource;
+    [SerializeField] private AudioClip[] clips;
 
     private void GetDisappearFromInput()
     {
@@ -82,6 +85,7 @@ public class PlayerController : EntityController, IDataPersistence
 
             if (velocity.x != 0 || velocity.y != 0) {
                 angleDirection = velocity;
+                walkCycle += 1 / 60f;
             }
 
             velocity.Normalize();
@@ -94,6 +98,16 @@ public class PlayerController : EntityController, IDataPersistence
             SetInput(false);
             spriteAnimator.SetBool("IsDead", true);
         }
+
+        //if (walkCycle > 1f) {
+        //    if (Random.Range(0f, 1f) > .3f) {
+        //        walkCycle -= 1f;
+        //        AudioClip currClip = clips[Random.Range(0, clips.Length)];
+        //        footstepSource.pitch = 1 + Random.Range(-.3f, .3f);
+        //        footstepSource.PlayOneShot(currClip, 1f);
+        //    }
+        //}
+
         velocity = Vector2.zero;
         GetDisappearFromInput();
         SetMovementFromInput();
@@ -120,6 +134,7 @@ public class PlayerController : EntityController, IDataPersistence
         spriteImage = sprite.GetComponent<SpriteRenderer>();
         spriteAnimator = sprite.GetComponent<Animator>();
         lr = GetComponent<LineRenderer>();
+        footstepSource = GetComponent<AudioSource>();
     }
 
     public override void PostMove()
